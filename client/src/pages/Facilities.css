@@ -1,0 +1,79 @@
+.facilities-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .facilities-detailed-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.facility-detailed-card {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2.25rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 576px) {
+  .facility-detailed-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
+}
+
+.facility-detailed-card .icon-box {
+  color: var(--accent);
+  background-color: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.facility-detailed-card h4 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.facility-detailed-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Quote banner */
+.facilities-quote-banner {
+  margin-top: 5rem;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+}
+
+.facilities-quote-banner .heart-icon {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.facilities-quote-banner h3 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.facilities-quote-banner p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin: 0 auto;
+}

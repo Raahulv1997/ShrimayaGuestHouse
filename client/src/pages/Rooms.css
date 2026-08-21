@@ -1,0 +1,314 @@
+/* --- PAGE HEADER BANNER --- */
+.page-header-banner {
+  background-color: var(--primary);
+  background-image: linear-gradient(rgba(13, 27, 42, 0.75), rgba(13, 27, 42, 0.75)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  color: #FFF;
+  padding: 4.5rem 0;
+  text-align: center;
+  border-bottom: 2px solid var(--accent);
+}
+
+.banner-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.page-header-banner h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.page-header-banner p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+  max-width: 600px;
+}
+
+/* --- GRID LAYOUT --- */
+.rooms-layout-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .rooms-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- SIDEBAR --- */
+.rooms-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sidebar-widget {
+  padding: 1.5rem;
+}
+
+.sidebar-widget h3 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.category-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-btn-item {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn-item:hover,
+.filter-btn-item.active {
+  background-color: var(--primary);
+  color: #FFF;
+  border-color: var(--primary);
+}
+
+/* --- MAIN LISTING CONTENT --- */
+.rooms-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.availability-info-alert {
+  background-color: rgba(212, 175, 55, 0.08);
+  border: 1px dashed var(--accent);
+  color: var(--primary);
+  padding: 0.8rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+}
+
+.error-alert {
+  background-color: #FEE2E2;
+  border: 1px solid #EF4444;
+  color: #B91C1C;
+  padding: 0.8rem 1.25rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+}
+
+.rooms-loader {
+  padding: 3rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.no-rooms-found {
+  padding: 3rem;
+  text-align: center;
+}
+
+.no-rooms-found h4 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.no-rooms-found p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Row card styling */
+.room-row-item {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.row-image {
+  position: relative;
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.row-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.row-tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgba(13, 27, 42, 0.9);
+  color: var(--accent);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.row-details {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.row-header h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.row-price {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.row-price .amt {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  display: block;
+}
+
+.row-price .unit {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.row-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.row-amenities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.row-amenity-pill {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.row-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: auto;
+  gap: 1rem;
+}
+
+.stock-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+}
+
+.stock-label.instock {
+  background-color: #D1FAE5;
+  color: #065F46;
+}
+
+.stock-label.outofstock {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
+
+.stock-label.info {
+  background-color: #DBEAFE;
+  color: #1E40AF;
+}
+
+.row-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .room-row-item {
+    flex-direction: column;
+  }
+  .row-image {
+    width: 100%;
+    height: 200px;
+  }
+  .row-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .row-price {
+    text-align: left;
+  }
+  .row-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .row-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,78 @@
+.about-narrative-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .about-narrative-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.narrative-text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.narrative-text-box h2 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.narrative-text-box p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+
+.narrative-image-box {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.narrative-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Values cards */
+.value-card {
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.value-icon-box {
+  color: var(--accent);
+  background-color: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.value-card h4 {
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.value-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

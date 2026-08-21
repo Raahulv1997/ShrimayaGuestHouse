@@ -1,0 +1,226 @@
+.dashboard-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .dashboard-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-header-title {
+  margin-bottom: 2rem;
+}
+
+.dashboard-header-title .lbl {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.25rem;
+}
+
+.dashboard-header-title h2 {
+  font-size: 2.2rem;
+  color: var(--primary);
+}
+
+.bookings-loader {
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.no-bookings-widget {
+  padding: 4rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.no-bookings-widget h4 {
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.no-bookings-widget p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 400px;
+}
+
+.booking-section-group {
+  margin-bottom: 2.5rem;
+}
+
+.booking-section-group h3 {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.4rem;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.bookings-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.booking-status-card {
+  padding: 1.5rem;
+}
+
+.booking-status-card .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.booking-status-card .card-top h4 {
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.booking-id-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  display: block;
+  margin-top: 0.15rem;
+}
+
+.card-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 576px) {
+  .card-details-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.card-actions-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-danger-style {
+  border-color: #EF4444;
+  color: #EF4444;
+}
+
+.btn-danger-style:hover {
+  background-color: #EF4444;
+  color: #FFF;
+}
+
+/* Sidebar Profile settings */
+.sidebar-settings-card {
+  padding: 1.75rem;
+}
+
+.sidebar-settings-card h3 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.profile-alert {
+  padding: 0.65rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.profile-alert.success {
+  background-color: #D1FAE5;
+  color: #065F46;
+  border: 1px solid #10B981;
+}
+
+.profile-alert.error {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #EF4444;
+}
+
+/* Success payment banner */
+.booking-success-banner {
+  background-color: rgba(16, 185, 129, 0.08);
+  border: 1.5px solid #10B981;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.booking-success-banner .success-icon {
+  color: #10B981;
+  flex-shrink: 0;
+}
+
+.booking-success-banner h3 {
+  color: var(--primary);
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.booking-success-banner p {
+  color: var(--text-dark);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.close-banner-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .booking-success-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}

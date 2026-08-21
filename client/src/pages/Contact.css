@@ -1,0 +1,155 @@
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .contact-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-details-box {
+  padding: 2rem;
+}
+
+.contact-details-box h3 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.info-list .icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-list h5 {
+  font-size: 0.95rem;
+  color: var(--primary);
+  margin-bottom: 0.2rem;
+}
+
+.info-list p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* WhatsApp CTA Widget */
+.whatsapp-cta-widget {
+  padding: 2rem;
+  background-color: rgba(37, 211, 102, 0.05);
+  border: 1px solid rgba(37, 211, 102, 0.2);
+  border-radius: 8px;
+}
+
+.whatsapp-cta-widget .wa-icon {
+  color: #25D366;
+  margin-bottom: 0.75rem;
+}
+
+.whatsapp-cta-widget h4 {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+}
+
+.whatsapp-cta-widget p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+/* Contact Form Panel */
+.contact-form-panel {
+  padding: 2.5rem;
+}
+
+@media (max-width: 576px) {
+  .contact-form-panel {
+    padding: 1.5rem;
+  }
+}
+
+.contact-form-panel h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.form-subtext {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.contact-form-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.btn-send {
+  display: inline-flex;
+  align-self: flex-start;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 576px) {
+  .btn-send {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+/* Alerts */
+.contact-alert {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-alert.success {
+  background-color: #D1FAE5;
+  color: #065F46;
+  border: 1px solid #10B981;
+}
+
+.contact-alert.error {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #EF4444;
+}

@@ -1,0 +1,594 @@
+.admin-dashboard-page {
+  display: flex;
+  min-height: calc(100vh - 80px); /* Subtract navbar height */
+  background-color: var(--bg-light);
+}
+
+/* --- SIDEBAR --- */
+.admin-sidebar {
+  width: 280px;
+  background-color: var(--primary);
+  color: #FFF;
+  border-right: 1.5px solid var(--accent);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 1.5rem;
+}
+
+.admin-brand .shield-icon {
+  color: var(--accent);
+}
+
+.admin-brand h4 {
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.admin-brand span {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+}
+
+.admin-nav-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0 0.75rem;
+}
+
+.admin-tab-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.75);
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: var(--transition);
+}
+
+.admin-tab-btn:hover {
+  background-color: rgba(255,255,255,0.05);
+  color: #FFF;
+}
+
+.admin-tab-btn.active {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+/* --- MAIN PANEL --- */
+.admin-main-panel {
+  flex-grow: 1;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .admin-dashboard-page {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--accent);
+    padding: 1rem 0;
+  }
+  .admin-main-panel {
+    padding: 1.5rem;
+  }
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1.5px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+.panel-header h2 {
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+
+.btn-refresh {
+  border-color: var(--border);
+  color: var(--text-dark);
+}
+
+.btn-refresh:hover {
+  background-color: var(--border);
+}
+
+.panel-loader {
+  padding: 4rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Analytics */
+.admin-analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .admin-analytics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.analytic-card {
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.analytic-card .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.analytic-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+}
+
+.analytic-card p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.icon-blue { color: #3B82F6; }
+.icon-gold { color: #D4AF37; }
+.icon-green { color: #10B981; }
+.icon-navy { color: #1E293B; }
+
+/* Management Actions Row */
+.section-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.section-actions-row h3 {
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+/* Forms in Admin Panel */
+.admin-add-form {
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  border-color: var(--accent);
+}
+
+.admin-add-form h4 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+
+.form-row-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .form-row-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.form-actions-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Select badge styling for tables */
+.select-badge {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  height: auto;
+}
+
+.select-badge.badge-confirmed,
+.select-badge.badge-success {
+  background-color: #D1FAE5;
+  color: #065F46;
+  border: 1px solid #10B981;
+}
+
+.select-badge.badge-pending {
+  background-color: #FEF3C7;
+  color: #92400E;
+  border: 1px solid #F59E0B;
+}
+
+.select-badge.badge-cancelled,
+.select-badge.badge-refunded,
+.select-badge.badge-danger {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #EF4444;
+}
+
+.no-items-placeholder {
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Show desktop tables, hide mobile card blocks by default */
+.bookings-table-desktop,
+.users-table-desktop,
+.offers-table-desktop,
+.categories-table-desktop {
+  display: block;
+}
+.bookings-cards-mobile-list,
+.users-cards-mobile-list,
+.offers-cards-mobile-list,
+.categories-cards-mobile-list {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Hide desktop tables */
+  .bookings-table-desktop,
+  .users-table-desktop,
+  .offers-table-desktop,
+  .categories-table-desktop {
+    display: none !important;
+  }
+
+  /* Display mobile card lists */
+  .bookings-cards-mobile-list,
+  .users-cards-mobile-list,
+  .offers-cards-mobile-list,
+  .categories-cards-mobile-list {
+    display: flex !important;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  /* Mobile Booking, User, Offer, & Category Card Styling */
+  .admin-booking-mobile-card,
+  .admin-user-mobile-card,
+  .admin-offer-mobile-card,
+  .admin-category-mobile-card {
+    padding: 0 !important; /* Reset padding to allow full-width header background */
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06) !important;
+    overflow: hidden !important; /* Ensures the header background corners are rounded */
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .admin-booking-mobile-card .card-header-row,
+  .admin-user-mobile-card .card-header-row,
+  .admin-offer-mobile-card .card-header-row,
+  .admin-category-mobile-card .card-header-row {
+    background: #0d1b2a !important; /* Premium Dark Navy/Black Background */
+    color: #FFFFFF !important; /* White text for contrast */
+    padding: 0.75rem 1rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+  }
+
+  .admin-booking-mobile-card .card-header-row span:not(.badge),
+  .admin-booking-mobile-card .card-header-row strong,
+  .admin-user-mobile-card .card-header-row strong,
+  .admin-offer-mobile-card .card-header-row span:not(.badge),
+  .admin-category-mobile-card .card-header-row span:not(.badge),
+  .admin-category-mobile-card .card-header-row strong {
+    color: #FFFFFF !important;
+  }
+
+  .admin-booking-mobile-card .booking-ref {
+    font-weight: 700 !important;
+    font-size: 0.88rem !important;
+    color: #FFF !important;
+  }
+
+  .admin-booking-mobile-card .card-body-info,
+  .admin-user-mobile-card .card-body-info,
+  .admin-offer-mobile-card .card-body-info,
+  .admin-category-mobile-card .card-body-info {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+  }
+
+  .admin-booking-mobile-card .info-item,
+  .admin-user-mobile-card .info-item,
+  .admin-offer-mobile-card .info-item,
+  .admin-category-mobile-card .info-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 0.85rem !important;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.05) !important;
+    padding-bottom: 0.4rem !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Support vertical layout for long fields to prevent horizontal overflow */
+  .admin-booking-mobile-card .info-item.vertical,
+  .admin-user-mobile-card .info-item.vertical,
+  .admin-offer-mobile-card .info-item.vertical,
+  .admin-category-mobile-card .info-item.vertical {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.25rem !important;
+  }
+
+  .admin-booking-mobile-card .info-item.vertical .info-val,
+  .admin-user-mobile-card .info-item.vertical .info-val,
+  .admin-offer-mobile-card .info-item.vertical .info-val,
+  .admin-category-mobile-card .info-item.vertical .info-val {
+    text-align: left !important;
+    width: 100% !important;
+    word-break: break-all !important;
+  }
+
+  .admin-booking-mobile-card .info-item:last-child,
+  .admin-user-mobile-card .info-item:last-child,
+  .admin-offer-mobile-card .info-item:last-child,
+  .admin-category-mobile-card .info-item:last-child {
+    border-bottom: none !important;
+  }
+
+  .admin-booking-mobile-card .info-label,
+  .admin-user-mobile-card .info-label,
+  .admin-offer-mobile-card .info-label,
+  .admin-category-mobile-card .info-label {
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    flex-shrink: 0 !important;
+  }
+
+  .admin-booking-mobile-card .info-val,
+  .admin-user-mobile-card .info-val,
+  .admin-offer-mobile-card .info-val,
+  .admin-category-mobile-card .info-val {
+    color: var(--text-dark) !important;
+    text-align: right !important;
+  }
+
+  .admin-booking-mobile-card .card-actions-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+    border-top: 1px solid var(--border) !important;
+    padding: 1rem !important;
+    background-color: var(--bg-light) !important;
+  }
+
+  .admin-booking-mobile-card .action-control {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+  }
+
+  .admin-booking-mobile-card .action-control label {
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+    text-align: left !important;
+  }
+
+  .admin-user-mobile-card .card-actions-row,
+  .admin-offer-mobile-card .card-actions-row,
+  .admin-category-mobile-card .card-actions-row {
+    display: flex !important;
+    gap: 1rem !important;
+    border-top: 1px solid var(--border) !important;
+    padding: 1rem !important;
+    background-color: var(--bg-light) !important;
+  }
+  
+  .admin-offer-mobile-card .card-actions-row {
+    justify-content: flex-end !important; /* Align the delete button to the right */
+  }
+
+  .admin-user-mobile-card .card-actions-row button,
+  .admin-offer-mobile-card .card-actions-row button,
+  .admin-category-mobile-card .card-actions-row button {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.75rem !important;
+    height: auto !important;
+    min-height: unset !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.3rem !important;
+  }
+
+  .admin-offer-mobile-card .btn-delete-offer {
+    width: auto !important;
+    padding: 0.4rem 1.25rem !important; /* Compact button paddings */
+    margin: 0 !important;
+  }
+
+  /* Scale down header reload/refresh button and layout on mobile */
+  .panel-header {
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  .panel-header h2 {
+    font-size: 1.3rem !important;
+  }
+  .btn-refresh {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.75rem !important;
+    height: auto !important;
+    min-height: unset !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+  }
+
+  /* Force standard room tables (not rewritten yet) to block stacks on mobile */
+  .rooms-management-view table,
+  .rooms-management-view thead,
+  .rooms-management-view tbody,
+  .rooms-management-view th,
+  .rooms-management-view td,
+  .rooms-management-view tr {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .rooms-management-view thead tr {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+  }
+
+  .rooms-management-view tbody tr {
+    border: 1px solid var(--border) !important;
+    margin-bottom: 1.5rem !important;
+    padding: 1.25rem 1rem !important;
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;
+  }
+
+  .rooms-management-view td {
+    border: none !important;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.08) !important;
+    position: relative !important;
+    padding: 0.75rem 0.5rem 0.75rem 45% !important;
+    text-align: right !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    min-height: 48px !important;
+  }
+
+  .rooms-management-view td:last-child {
+    border-bottom: none !important;
+  }
+
+  .rooms-management-view td::before {
+    position: absolute !important;
+    left: 10px !important;
+    width: 40% !important;
+    text-align: left !important;
+    font-weight: 700 !important;
+    font-size: 0.72rem !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+  }
+
+  /* Labels for Room Listings */
+  .rooms-management-view table:not(.categories-table) td:nth-of-type(1)::before { content: "Room Image" !important; }
+  .rooms-management-view table:not(.categories-table) td:nth-of-type(2)::before { content: "Room Name" !important; }
+  .rooms-management-view table:not(.categories-table) td:nth-of-type(3)::before { content: "Category" !important; }
+  .rooms-management-view table:not(.categories-table) td:nth-of-type(4)::before { content: "Price/Night" !important; }
+  .rooms-management-view table:not(.categories-table) td:nth-of-type(5)::before { content: "Inventory" !important; }
+  .rooms-management-view table:not(.categories-table) td:nth-of-type(6)::before { content: "Actions" !important; }
+
+  /* Labels for Categories Sub-table */
+  .rooms-management-view table.categories-table td:nth-of-type(1)::before { content: "Category Name" !important; }
+  .rooms-management-view table.categories-table td:nth-of-type(2)::before { content: "Rooms Configured" !important; }
+  .rooms-management-view table.categories-table td:nth-of-type(3)::before { content: "Actions" !important; }
+
+  .rooms-management-view td img {
+    margin: 0 !important;
+  }
+}
+
+/* --- MODAL OVERLAY AND CARD STYLES --- */
+.admin-modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(13, 27, 42, 0.45) !important; /* Soft premium navy dark overlay backdrop */
+  backdrop-filter: blur(4px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 1200 !important; /* Above sticky header */
+  padding: 1.5rem !important;
+}
+
+.admin-modal-card {
+  background: #FFFFFF !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15) !important;
+  width: 100% !important;
+  max-width: 650px !important;
+  max-height: 85vh !important;
+  overflow-y: auto !important;
+  animation: modalFadeIn 0.25s ease-out !important;
+  border: 1px solid var(--border) !important;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

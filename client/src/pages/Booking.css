@@ -1,0 +1,319 @@
+/* --- GRID LAYOUT --- */
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- SUMMARY COLUMN --- */
+.booking-summary-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.summary-card {
+  padding: 1.75rem;
+}
+
+.summary-title {
+  font-size: 1.25rem;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.summary-room-header {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.summary-room-img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.summary-room-header h4 {
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.summary-room-header .cat {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+}
+
+.summary-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.detail-row .lbl {
+  color: var(--text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-row .lbl svg {
+  color: var(--accent);
+}
+
+.detail-row .val {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.guest-info-display {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.login-prompt-booking {
+  text-align: center;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-prompt-booking p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* --- BILLING COLUMN --- */
+.booking-billing-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.billing-widget {
+  padding: 1.75rem;
+}
+
+.billing-widget h3 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.coupon-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.coupon-input {
+  flex-grow: 1;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.coupon-btn {
+  padding: 0.55rem 1rem;
+  font-size: 0.82rem;
+}
+
+.coupon-msg {
+  font-size: 0.78rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.coupon-msg.succ { color: #059669; }
+.coupon-msg.err { color: #DC2626; }
+
+.final-bill .bill-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.bill-row-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+}
+
+.bill-row-item.discount-row {
+  color: #059669;
+  font-weight: 600;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: 0.25rem 0;
+}
+
+.bill-row-item.grand-total {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.bill-row-item.grand-total span:last-child {
+  color: var(--accent-dark);
+}
+
+.btn-checkout {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.checkout-helper-text {
+  font-size: 0.78rem;
+  color: #DC2626;
+  text-align: center;
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+
+/* --- SIMULATED MOCK GATEWAY OVERLAY --- */
+.mock-gateway-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(7, 15, 24, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 1.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.mock-gateway-card {
+  max-width: 480px;
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.mock-gateway-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 0.75rem;
+}
+
+.mock-gateway-header h3 {
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+.spark-gold {
+  color: var(--accent);
+}
+
+.gateway-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.gateway-receipt-details {
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.gateway-card-mockup {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #FFF;
+  border-radius: 8px;
+  padding: 1.5rem;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: relative;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.gateway-card-mockup .chip {
+  width: 38px;
+  height: 28px;
+  background-color: var(--accent-light);
+  border-radius: 4px;
+}
+
+.gateway-card-mockup .number {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.gateway-card-mockup .expiry {
+  font-size: 0.8rem;
+  align-self: flex-end;
+}
+
+.gateway-card-mockup .name {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.gateway-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.btn-gateway {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}

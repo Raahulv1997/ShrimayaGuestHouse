@@ -1,0 +1,110 @@
+.booking-form-widget {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+}
+
+.booking-form-widget.inline {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr) 1.2fr;
+  gap: 1rem;
+  align-items: flex-end;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background: rgba(13, 27, 42, 0.98); /* Premium dark navy overlay */
+  border: 1px solid var(--accent); /* Elegant gold border */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.booking-form-widget.inline .form-item label {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.booking-form-widget.inline .booking-input {
+  background-color: var(--primary-light) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+.booking-form-widget.inline .booking-input:focus {
+  border-color: var(--accent) !important;
+  background-color: #24324d !important;
+}
+
+@media (max-width: 992px) {
+  .booking-form-widget.inline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .booking-form-widget.inline .booking-submit-btn {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 576px) {
+  .booking-form-widget.inline {
+    grid-template-columns: 1fr;
+  }
+  .booking-form-widget.inline .booking-submit-btn {
+    grid-column: span 1;
+  }
+}
+
+.booking-form-widget.stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  border: 1px solid var(--border);
+}
+
+.booking-form-widget.stacked .booking-input {
+  border: 1px solid #CBD5E1 !important; /* Clear Slate 300 border for high contrast */
+  background-color: #FFF !important;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.form-item label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-light);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.form-item label svg {
+  color: var(--accent);
+}
+
+.booking-input {
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  padding: 0.65rem 0.8rem;
+  font-size: 0.88rem;
+  background-color: var(--bg-light);
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.booking-input:focus {
+  background-color: #FFF;
+}
+
+.booking-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  height: 42px;
+}

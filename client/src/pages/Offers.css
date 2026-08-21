@@ -1,0 +1,151 @@
+.offers-list-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.offers-loader {
+  padding: 3rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Coupon Ticket Style */
+.offer-ticket-card {
+  display: flex;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .offer-ticket-card {
+    flex-direction: column;
+  }
+}
+
+.ticket-left {
+  background-color: var(--primary);
+  color: #FFF;
+  width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 0.75rem;
+  border-right: 2px dashed var(--accent);
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .ticket-left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px dashed var(--accent);
+    padding: 1.5rem;
+  }
+}
+
+.ticket-left::before,
+.ticket-left::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--bg-light);
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.ticket-left::before { top: -8px; }
+.ticket-left::after { bottom: -8px; }
+
+@media (max-width: 600px) {
+  .ticket-left::before,
+  .ticket-left::after {
+    display: none;
+  }
+}
+
+.ticket-icon {
+  color: var(--accent);
+}
+
+.discount-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.ticket-right {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-grow: 1;
+}
+
+.ticket-right h3 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  line-height: 1.5;
+}
+
+.validity-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.coupon-code-copy-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.code-display {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  color: var(--primary-light);
+  letter-spacing: 1.5px;
+}
+
+.copy-btn {
+  padding: 0.45rem 1rem;
+  font-size: 0.8rem;
+}
+
+/* Informative Note Box */
+.offers-note-block {
+  max-width: 800px;
+  margin: 4rem auto 0 auto;
+  padding: 2rem;
+  background-color: #FFF;
+}
+
+.offers-note-block h4 {
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.offers-note-block p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}

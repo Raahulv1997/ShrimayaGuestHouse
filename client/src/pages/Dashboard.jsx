@@ -211,29 +211,35 @@ const Dashboard = () => {
                 {pastBookings.length > 0 && (
                   <div className="booking-section-group">
                     <h3>Cancelled Reservations</h3>
-                    <div className="table-responsive card">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Room Type</th>
-                            <th>Dates</th>
-                            <th>Amount</th>
-                            <th>Payment Status</th>
-                            <th>Status</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {pastBookings.map((b) => (
-                            <tr key={b._id}>
-                              <td><strong>{b.room?.name || 'Deleted Room Listing'}</strong></td>
-                              <td>{new Date(b.checkIn).toLocaleDateString()} - {new Date(b.checkOut).toLocaleDateString()}</td>
-                              <td>Rs. {b.totalAmount}</td>
-                              <td>{b.paymentStatus}</td>
-                              <td><span className="badge badge-danger">Cancelled</span></td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                    <div className="bookings-cards-grid">
+                      {pastBookings.map((b) => (
+                        <div key={b._id} className="booking-status-card card cancelled-card">
+                          <div className="card-top">
+                            <div>
+                              <h4>{b.room?.name || 'Deleted Room Listing'}</h4>
+                              <span className="booking-id-sub">Ref: SM-{b._id.toString().substring(18).toUpperCase()}</span>
+                            </div>
+                            <span className="badge badge-danger">
+                              Cancelled
+                            </span>
+                          </div>
+                          
+                          <div className="card-details-grid">
+                            <div>
+                              <strong>Dates:</strong> {new Date(b.checkIn).toLocaleDateString()} - {new Date(b.checkOut).toLocaleDateString()}
+                            </div>
+                            <div>
+                              <strong>Guests:</strong> {b.guests} Guests
+                            </div>
+                            <div>
+                              <strong>Rooms:</strong> {b.roomsCount} Room(s)
+                            </div>
+                            <div>
+                              <strong>Total Amount:</strong> Rs. {b.totalAmount} ({b.paymentStatus})
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}

@@ -23,6 +23,20 @@ const Dashboard = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
 
+  const renderPaymentStatusBadge = (status) => {
+    const lower = (status || '').toLowerCase();
+    if (lower === 'paid') {
+      return <span className="badge badge-success" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Paid</span>;
+    }
+    if (lower === 'refunded') {
+      return <span className="badge badge-info" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Refunded</span>;
+    }
+    if (lower === 'pending') {
+      return <span className="badge badge-pending" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Pending</span>;
+    }
+    return <span className="badge badge-danger" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Unpaid</span>;
+  };
+
   const showSuccessBanner = searchParams.get('status') === 'success';
 
   useEffect(() => {
@@ -179,11 +193,7 @@ const Dashboard = () => {
                               <strong>Rooms:</strong> {b.roomsCount} Room(s)
                             </div>
                             <div>
-                              <strong>Total Amount:</strong> Rs. {b.totalAmount} {b.paymentStatus === 'paid' ? (
-                                <span className="badge badge-success" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Paid</span>
-                              ) : (
-                                <span className="badge badge-danger" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Unpaid</span>
-                              )}
+                              <strong>Total Amount:</strong> Rs. {b.totalAmount} {renderPaymentStatusBadge(b.paymentStatus)}
                             </div>
                           </div>
 
@@ -239,11 +249,7 @@ const Dashboard = () => {
                               <strong>Rooms:</strong> {b.roomsCount} Room(s)
                             </div>
                             <div>
-                              <strong>Total Amount:</strong> Rs. {b.totalAmount} {b.paymentStatus === 'paid' ? (
-                                <span className="badge badge-success" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Paid</span>
-                              ) : (
-                                <span className="badge badge-danger" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Unpaid</span>
-                              )}
+                              <strong>Total Amount:</strong> Rs. {b.totalAmount} {renderPaymentStatusBadge(b.paymentStatus)}
                             </div>
                           </div>
                         </div>

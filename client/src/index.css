@@ -240,6 +240,7 @@ button, input, select, textarea {
 .badge-success { background: #D1FAE5; color: #065F46; }
 .badge-pending { background: #FEF3C7; color: #92400E; }
 .badge-danger { background: #FEE2E2; color: #991B1B; }
+.badge-info { background: #DBEAFE; color: #1E40AF; }
 
 /* --- KEYFRAMES & MICRO-ANIMATIONS --- */
 @keyframes float {

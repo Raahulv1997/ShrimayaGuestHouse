@@ -179,7 +179,11 @@ const Dashboard = () => {
                               <strong>Rooms:</strong> {b.roomsCount} Room(s)
                             </div>
                             <div>
-                              <strong>Total Amount:</strong> Rs. {b.totalAmount} ({b.paymentStatus})
+                              <strong>Total Amount:</strong> Rs. {b.totalAmount} {b.paymentStatus === 'paid' ? (
+                                <span className="badge badge-success" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Paid</span>
+                              ) : (
+                                <span className="badge badge-danger" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Unpaid</span>
+                              )}
                             </div>
                           </div>
 
@@ -235,7 +239,11 @@ const Dashboard = () => {
                               <strong>Rooms:</strong> {b.roomsCount} Room(s)
                             </div>
                             <div>
-                              <strong>Total Amount:</strong> Rs. {b.totalAmount} ({b.paymentStatus})
+                              <strong>Total Amount:</strong> Rs. {b.totalAmount} {b.paymentStatus === 'paid' ? (
+                                <span className="badge badge-success" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Paid</span>
+                              ) : (
+                                <span className="badge badge-danger" style={{ marginLeft: '0.5rem', textTransform: 'uppercase', fontSize: '0.7rem', display: 'inline-block' }}>Unpaid</span>
+                              )}
                             </div>
                           </div>
                         </div>

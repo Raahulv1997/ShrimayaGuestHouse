@@ -21,7 +21,10 @@ export const getImageUrl = (imagePath) => {
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
     return imagePath;
   }
-  const backendBase = `${window.location.protocol}//${window.location.hostname}:5000`;
+  let backendBase = `${window.location.protocol}//${window.location.hostname}:5000`;
+  if (import.meta.env.VITE_API_URL) {
+    backendBase = import.meta.env.VITE_API_URL.replace('/api', '');
+  }
   return `${backendBase}${imagePath}`;
 };
 

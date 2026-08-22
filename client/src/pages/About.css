@@ -82,6 +82,10 @@
 }
 
 @media (max-width: 768px) {
+  .about-page .container {
+    padding: 0 1.5rem !important;
+  }
+
   .about-narrative-grid {
     gap: 1.5rem;
     padding: 0 0.15rem;

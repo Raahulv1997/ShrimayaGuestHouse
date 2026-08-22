@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate, useSearchParams, Link as RouterLink } from 'react-router-dom';
-import { Mail, Lock, Sparkles, ShieldCheck, Phone, KeyRound } from 'lucide-react';
+import { Mail, Lock, Sparkles, ShieldCheck, Phone, KeyRound, User } from 'lucide-react';
 import { AuthContext } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import './Login.css';
@@ -19,6 +19,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   // Mobile OTP form states
+  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
@@ -68,6 +69,10 @@ const Login = () => {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     if (!phone) return;
+    if (!name.trim()) {
+      setErrorMsg('Please enter your Full Name.');
+      return;
+    }
     if (phone.length !== 10) {
       setErrorMsg('Please enter a valid 10-digit mobile number.');
       return;
@@ -101,7 +106,7 @@ const Login = () => {
     setLoading(true);
     setErrorMsg('');
 
-    const result = await loginWithOtp(phone, otp);
+    const result = await loginWithOtp(phone, otp, name);
     setLoading(false);
 
     if (!result.success) {
@@ -225,6 +230,22 @@ const Login = () => {
             <form onSubmit={otpSent ? handleVerifyOtp : handleSendOtp} className="login-form">
               {!otpSent ? (
                 <>
+                  <div className="form-group">
+                    <label htmlFor="login-name">Full Name</label>
+                    <div className="input-with-icon-wrapper">
+                      <User size={16} className="input-icon" />
+                      <input
+                        id="login-name"
+                        type="text"
+                        placeholder="Enter your full name"
+                        className="form-control padded-input"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                      />
+                    </div>
+                  </div>
+
                   <div className="form-group">
                     <label htmlFor="login-phone">Mobile Number</label>
                     <div className="input-with-icon-wrapper">

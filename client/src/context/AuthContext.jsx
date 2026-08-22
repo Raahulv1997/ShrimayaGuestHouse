@@ -90,9 +90,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const loginWithOtp = async (phone, otp) => {
+  const loginWithOtp = async (phone, otp, name) => {
     try {
-      const { data } = await API.post('/users/verify-otp', { phone, otp });
+      const { data } = await API.post('/users/verify-otp', { phone, otp, name });
       setUser(data);
       localStorage.setItem('userInfo', JSON.stringify(data));
       return { success: true };

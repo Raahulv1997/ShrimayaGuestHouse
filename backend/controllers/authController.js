@@ -247,6 +247,36 @@ export const updateUser = async (req, res) => {
   }
 };
 
+// Helper to dispatch SMS via Fast2SMS API
+const sendSMS = async (phone, otp) => {
+  const apiKey = process.env.FAST2SMS_API_KEY;
+  if (!apiKey) {
+    console.log(`[SMS SERVICE] No FAST2SMS_API_KEY set. SMS not dispatched to ${phone}.`);
+    return false;
+  }
+
+  try {
+    const response = await axios.post(
+      'https://www.fast2sms.com/dev/bulkV2',
+      {
+        variables_values: otp,
+        route: 'otp',
+        numbers: phone,
+      },
+      {
+        headers: {
+          authorization: apiKey,
+        },
+      }
+    );
+    console.log(`[SMS SERVICE] SMS sent successfully via Fast2SMS to ${phone}:`, response.data);
+    return true;
+  } catch (error) {
+    console.error(`[SMS SERVICE] Fast2SMS dispatch failed for ${phone}:`, error.response?.data || error.message);
+    return false;
+  }
+};
+
 // @desc    Send OTP to phone
 // @route   POST /api/users/send-otp
 // @access  Public
@@ -271,9 +301,14 @@ export const sendOTP = async (req, res) => {
     // Output to console log for staging / easy debugging
     console.log(`[OTP SERVICE] Generated OTP for ${phone} is: ${otp}`);
 
+    // Call SMS gateway
+    const smsSent = await sendSMS(phone, otp);
+
     // Return the OTP code directly in response for easy testing
     res.status(200).json({
-      message: 'OTP generated successfully. (For testing, copy the otp below)',
+      message: smsSent 
+        ? 'OTP sent successfully to your mobile number.' 
+        : 'OTP generated (Logged to server console, SMS API key missing on host).',
       otpForTesting: otp,
     });
   } catch (error) {
@@ -285,7 +320,7 @@ export const sendOTP = async (req, res) => {
 // @route   POST /api/users/verify-otp
 // @access  Public
 export const verifyOTP = async (req, res) => {
-  const { phone, otp } = req.body;
+  const { phone, otp, name } = req.body;
   if (!phone || !otp) {
     return res.status(400).json({ message: 'Phone and OTP are required' });
   }
@@ -315,16 +350,20 @@ export const verifyOTP = async (req, res) => {
     // Auto-register if user doesn't exist
     if (!user) {
       const tempEmail = `${phone}@otp.shrimayaguesthouse.com`;
-      const tempName = `Guest-${phone.slice(-4)}`;
+      const finalName = name || `Guest-${phone.slice(-4)}`;
       // Generate a random password (required field in database schema)
       const randomPassword = Math.random().toString(36).slice(-8) + 'A1!';
 
       user = await User.create({
-        name: tempName,
+        name: finalName,
         email: tempEmail,
         password: randomPassword,
         phone: phone,
       });
+    } else if (name && (user.name.startsWith('Guest-') || !user.name)) {
+      // Update placeholder Guest-XXXX name if they provided a real name now
+      user.name = name;
+      await user.save();
     }
 
     // Generate token and return success login payload

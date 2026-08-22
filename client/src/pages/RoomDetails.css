@@ -341,3 +341,23 @@
   font-weight: 400;
   color: var(--text-muted);
 }
+
+@media (max-width: 768px) {
+  .room-details-grid {
+    gap: 1.5rem;
+    padding: 0 0.15rem;
+  }
+  
+  .room-gallery-block,
+  .details-info-section,
+  .sidebar-sticky-widget,
+  .review-item-card,
+  .review-submit-block {
+    padding: 1.15rem !important;
+    margin-bottom: 1.25rem;
+  }
+  
+  .room-details-hero h2 {
+    font-size: 1.8rem;
+  }
+}

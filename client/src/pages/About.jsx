@@ -36,7 +36,7 @@ const About = () => {
         </div>
 
         {/* Brand Values */}
-        <div className="about-values-section" style={{ marginTop: '5rem' }}>
+        <div className="about-values-section">
           <div className="section-header">
             <h2>Our Core Principles</h2>
             <p>The values that guide every action we take and every service we provide.</p>

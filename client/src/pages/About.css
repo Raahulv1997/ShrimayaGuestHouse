@@ -76,3 +76,31 @@
   color: var(--text-muted);
   line-height: 1.6;
 }
+
+.about-values-section {
+  margin-top: 5rem;
+}
+
+@media (max-width: 768px) {
+  .about-narrative-grid {
+    gap: 1.5rem;
+    padding: 0 0.15rem;
+  }
+  
+  .narrative-text-box h2 {
+    font-size: 1.6rem;
+  }
+  
+  .narrative-image-box {
+    height: 240px;
+    margin-top: 0.5rem;
+  }
+  
+  .about-values-section {
+    margin-top: 3rem;
+  }
+  
+  .value-card {
+    padding: 1.75rem 1.25rem;
+  }
+}

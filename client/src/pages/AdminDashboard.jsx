@@ -189,18 +189,6 @@ const AdminDashboard = () => {
       image: room.images[0] || ''
     });
     setShowAddRoom(true);
-    setTimeout(() => {
-      const editFormElement = document.getElementById('edit-room-form-anchor');
-      if (editFormElement) {
-        const stickyNavbarHeight = 90;
-        const elementPosition = editFormElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - stickyNavbarHeight;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 100);
   };
 
   const handleRoomImageUpload = async (e) => {
@@ -374,18 +362,6 @@ const AdminDashboard = () => {
       role: u.role
     });
     setShowEditUser(true);
-    setTimeout(() => {
-      const editUserFormElement = document.getElementById('edit-user-form-anchor');
-      if (editUserFormElement) {
-        const stickyNavbarHeight = 90;
-        const elementPosition = editUserFormElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - stickyNavbarHeight;
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 100);
   };
 
   const handleUserSubmit = async (e) => {

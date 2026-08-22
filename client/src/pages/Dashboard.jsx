@@ -100,6 +100,7 @@ const Dashboard = () => {
       await API.put(`/bookings/${bookingId}/cancel`);
       alert('Booking cancelled successfully.');
       fetchMyBookings(); // reload
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       alert(error.response?.data?.message || 'Failed to cancel booking.');
     }

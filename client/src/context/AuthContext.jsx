@@ -78,6 +78,32 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('userInfo');
   };
 
+  const sendOtpCode = async (phone) => {
+    try {
+      const { data } = await API.post('/users/send-otp', { phone });
+      return { success: true, data };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.response?.data?.message || 'Failed to send OTP. Please try again.',
+      };
+    }
+  };
+
+  const loginWithOtp = async (phone, otp) => {
+    try {
+      const { data } = await API.post('/users/verify-otp', { phone, otp });
+      setUser(data);
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      return { success: true };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.response?.data?.message || 'Verification failed. Please check your OTP.',
+      };
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -88,6 +114,8 @@ export const AuthProvider = ({ children }) => {
         googleLogin,
         updateProfile,
         logout,
+        sendOtpCode,
+        loginWithOtp,
       }}
     >
       {children}

@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import User from '../models/User.js';
+import Otp from '../models/Otp.js';
 
 // Generate Token
 const generateToken = (id) => {
@@ -241,6 +242,100 @@ export const updateUser = async (req, res) => {
     } else {
       res.status(404).json({ message: 'User not found' });
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Send OTP to phone
+// @route   POST /api/users/send-otp
+// @access  Public
+export const sendOTP = async (req, res) => {
+  const { phone } = req.body;
+  if (!phone) {
+    return res.status(400).json({ message: 'Phone number is required' });
+  }
+
+  try {
+    // Generate a 6-digit verification code
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes validity
+
+    // Save or update the OTP in the database
+    await Otp.findOneAndUpdate(
+      { phone },
+      { otp, expiresAt },
+      { upsert: true, new: true }
+    );
+
+    // Output to console log for staging / easy debugging
+    console.log(`[OTP SERVICE] Generated OTP for ${phone} is: ${otp}`);
+
+    // Return the OTP code directly in response for easy testing
+    res.status(200).json({
+      message: 'OTP generated successfully. (For testing, copy the otp below)',
+      otpForTesting: otp,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Verify OTP and Log in or Auto-register
+// @route   POST /api/users/verify-otp
+// @access  Public
+export const verifyOTP = async (req, res) => {
+  const { phone, otp } = req.body;
+  if (!phone || !otp) {
+    return res.status(400).json({ message: 'Phone and OTP are required' });
+  }
+
+  try {
+    const otpRecord = await Otp.findOne({ phone });
+    if (!otpRecord) {
+      return res.status(400).json({ message: 'OTP expired or not found. Please try again.' });
+    }
+
+    if (otpRecord.otp !== otp) {
+      return res.status(400).json({ message: 'Invalid OTP' });
+    }
+
+    // OTP verified, remove record from database
+    await Otp.deleteOne({ _id: otpRecord._id });
+
+    // Check if user with this phone exists
+    let user = await User.findOne({ phone });
+
+    // If not found by phone, check if a temp-email user exists (e.g. 9876543210@otp.shrimayaguesthouse.com)
+    if (!user) {
+      const tempEmail = `${phone}@otp.shrimayaguesthouse.com`;
+      user = await User.findOne({ email: tempEmail });
+    }
+
+    // Auto-register if user doesn't exist
+    if (!user) {
+      const tempEmail = `${phone}@otp.shrimayaguesthouse.com`;
+      const tempName = `Guest-${phone.slice(-4)}`;
+      // Generate a random password (required field in database schema)
+      const randomPassword = Math.random().toString(36).slice(-8) + 'A1!';
+
+      user = await User.create({
+        name: tempName,
+        email: tempEmail,
+        password: randomPassword,
+        phone: phone,
+      });
+    }
+
+    // Generate token and return success login payload
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      phone: user.phone,
+      token: generateToken(user._id),
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

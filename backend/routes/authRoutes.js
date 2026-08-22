@@ -3,6 +3,8 @@ import {
   registerUser,
   loginUser,
   googleLogin,
+  sendOTP,
+  verifyOTP,
   getUserProfile,
   updateUserProfile,
   getAllUsers,
@@ -16,6 +18,8 @@ const router = express.Router();
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.post('/google-login', googleLogin);
+router.post('/send-otp', sendOTP);
+router.post('/verify-otp', verifyOTP);
 router.route('/profile')
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);

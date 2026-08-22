@@ -317,3 +317,47 @@
   font-size: 0.85rem;
   font-weight: 700;
 }
+
+/* --- SKELETON SHIMMER LOADER --- */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  animation: shimmer-anim 1.5s infinite linear;
+}
+
+@keyframes shimmer-anim {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-text {
+  height: 16px;
+  margin-bottom: 0.75rem;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.skeleton-text.heading {
+  height: 24px;
+  margin-bottom: 1.25rem;
+  width: 40%;
+}
+
+.skeleton-image {
+  width: 100px;
+  height: 75px;
+  border-radius: 4px;
+}
+
+.skeleton-input {
+  height: 42px;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.skeleton-button {
+  height: 48px;
+  width: 100%;
+  border-radius: 4px;
+}

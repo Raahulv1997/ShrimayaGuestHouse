@@ -276,7 +276,72 @@ const Booking = () => {
   };
 
   if (loadingRoom) {
-    return <div className="container section text-center">Preparing Booking Checkout...</div>;
+    return (
+      <div className="booking-page skeleton-loading-view">
+        {/* Skeleton Header Banner */}
+        <div className="page-header-banner">
+          <div className="container banner-inner">
+            <div className="skeleton-shimmer" style={{ width: '120px', height: '18px', borderRadius: '20px', marginBottom: '0.75rem' }}></div>
+            <div className="skeleton-shimmer" style={{ width: '320px', height: '32px', marginBottom: '0.75rem' }}></div>
+            <div className="skeleton-shimmer" style={{ width: '450px', height: '16px' }}></div>
+          </div>
+        </div>
+
+        <div className="container booking-grid section">
+          {/* Left Side Skeleton */}
+          <main className="booking-summary-column">
+            <div className="summary-card card">
+              <div className="skeleton-shimmer skeleton-text heading"></div>
+              <div className="summary-room-header">
+                <div className="skeleton-shimmer skeleton-image"></div>
+                <div style={{ flex: 1 }}>
+                  <div className="skeleton-shimmer skeleton-text" style={{ width: '70%', height: '20px' }}></div>
+                  <div className="skeleton-shimmer skeleton-text" style={{ width: '40%', height: '12px', marginTop: '0.25rem' }}></div>
+                </div>
+              </div>
+              <div className="summary-details-list" style={{ marginTop: '1.5rem' }}>
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="detail-row" style={{ marginBottom: '0.5rem' }}>
+                    <div className="skeleton-shimmer" style={{ width: '30%', height: '16px' }}></div>
+                    <div className="skeleton-shimmer" style={{ width: '40%', height: '16px' }}></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="summary-card card">
+              <div className="skeleton-shimmer skeleton-text heading" style={{ width: '30%' }}></div>
+              <div className="guest-info-display">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="skeleton-shimmer skeleton-text" style={{ width: '60%', height: '16px', marginBottom: '0.75rem' }}></div>
+                ))}
+              </div>
+            </div>
+          </main>
+
+          {/* Right Side Skeleton */}
+          <aside className="booking-billing-column">
+            <div className="billing-widget card">
+              <div className="skeleton-shimmer skeleton-text heading" style={{ width: '50%' }}></div>
+              <div className="skeleton-shimmer skeleton-input"></div>
+            </div>
+            
+            <div className="billing-widget card">
+              <div className="skeleton-shimmer skeleton-text heading" style={{ width: '40%' }}></div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '1.5rem' }}>
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <div className="skeleton-shimmer" style={{ width: '50%', height: '14px' }}></div>
+                    <div className="skeleton-shimmer" style={{ width: '20%', height: '14px' }}></div>
+                  </div>
+                ))}
+              </div>
+              <div className="skeleton-shimmer skeleton-button"></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    );
   }
 
   if (bookingError || !room) {
